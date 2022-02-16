@@ -5,9 +5,10 @@ const Navbar = () => {
     return (
         <nav>
             <ul>
-                <Link to="/">Accueil</Link> |" "
-                <Link to="/Profile">Mon Profile</Link> |" "
-                <Link to="/Register">S'inscrire</Link>
+                <Link to="/">Accueil</Link> | 
+                <Link to="/Profile">Mon Profile</Link> | 
+                <Link to="/Register">S'inscrire</Link> | 
+                <Link to="/Login">Se connecter</Link>
             </ul>
         </nav>
     );
