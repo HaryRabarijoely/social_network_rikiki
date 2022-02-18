@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import store from './store';
 import './App.scss';
+import EditProfile from './pages/EditProfile';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -20,9 +22,12 @@ function App() {
           <div className='container'>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/Register" element={<Register />} />
-              <Route path="/Login" element={<Login />} />
-              <Route path="/Profile" element={<Profile />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+              <Route path="/profile/edit" element={<PrivateRoute><EditProfile /></PrivateRoute>} />
+              <Route path="/profile/:userID" element={<PrivateRoute><Profile /></PrivateRoute>} />
+                           
             </Routes>
           </div>
         </main>

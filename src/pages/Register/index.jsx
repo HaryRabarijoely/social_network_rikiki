@@ -5,14 +5,15 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { Form, Input } from 'antd';
 import { logIn } from "../../store/userActions";
+import './index.scss';
 
 
 const Register = () => {
     const urlRegister = 'http://localhost:1337/auth/local/register';
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const handleSubmit = (value) => {
-        const collectedValues = { username: value['username'], email: value['email'], password: value['password'] }
+    const handleSubmit = (fieldsValue) => {
+        const collectedValues = { username: fieldsValue['username'], email: fieldsValue['email'], password: fieldsValue['password'] }
         axios.post(urlRegister, {
             username: `${collectedValues.username}`,
             email: `${collectedValues.email}`,
@@ -23,7 +24,7 @@ const Register = () => {
                 Cookies.set('id', response.data.user.id, { sameSite: 'lax' });
                 Cookies.set('isLoggedIn', true, { sameSite: 'lax' });
                 dispatch(logIn(Cookies.get('token'), Cookies.get('id')));
-                navigate.push('/');
+                navigate('/');
             })
             .catch(error => {
                 alert(error.response.data.message[0].message[0].message);

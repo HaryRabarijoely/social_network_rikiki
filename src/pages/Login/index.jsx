@@ -5,29 +5,29 @@ import { Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { logIn } from "../../store/userActions";
 import { useNavigate } from "react-router-dom";
+import '../Register/index.scss'
 
 
-const Login = () => {
-    const urlLogin = 'http://localhost:1337/auth/local';
+const Login = () => {    
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleSubmit = (fieldsValue) => {
-    const collectedValues = {email: fieldsValue['email'], password: fieldsValue['password']}
-    axios.post(urlLogin, {
-    identifier: `${collectedValues.email}`,
-    password: `${collectedValues.password}`,
-  })
-  .then(response => {
-    Cookies.set('token', response.data.jwt, { sameSite: 'lax' });
-    Cookies.set('id', response.data.user.id, { sameSite: 'lax' });
-    Cookies.set('isLoggedIn', true, { sameSite: 'lax' });
-    dispatch(logIn(Cookies.get('token'), Cookies.get('id')));
-    navigate.push('/');
-  })
-  .catch(error => {
-    alert(error.response.data.message[0].messages[0].message);
-  });
-  }
+      const collectedValues = {email: fieldsValue['email'], password: fieldsValue['password']}
+        axios.post('http://localhost:1337/auth/local', {
+        identifier: `${collectedValues.email}`,
+        password: `${collectedValues.password}`,
+      })
+      .then(response => {
+        Cookies.set('token', response.data.jwt, { sameSite: 'lax' });
+        Cookies.set('id', response.data.user.id, { sameSite: 'lax' });
+        Cookies.set('isLoggedIn', true, { sameSite: 'lax' });
+        dispatch(logIn(Cookies.get('token'), Cookies.get('id')));
+        navigate('/');
+      })
+      .catch(error => {
+        alert(error.response.data.message[0].messages[0].message);
+      });
+    }
 
     return (
         <>
