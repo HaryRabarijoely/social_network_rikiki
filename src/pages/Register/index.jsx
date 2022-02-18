@@ -8,13 +8,12 @@ import { logIn } from "../../store/userActions";
 import './index.scss';
 
 
-const Register = () => {
-    const urlRegister = 'http://localhost:1337/auth/local/register';
+const Register = () => {    
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleSubmit = (fieldsValue) => {
         const collectedValues = { username: fieldsValue['username'], email: fieldsValue['email'], password: fieldsValue['password'] }
-        axios.post(urlRegister, {
+        axios.post('http://localhost:1337/auth/local/register', {
             username: `${collectedValues.username}`,
             email: `${collectedValues.email}`,
             password: `${collectedValues.password}`
