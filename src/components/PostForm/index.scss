@@ -1,0 +1,12 @@
+@import "../../config";
+button {
+  border: none;
+  background-color: $primary;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
