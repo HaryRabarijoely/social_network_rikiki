@@ -22,6 +22,7 @@ const Home = () => {
   const handleNewPost = (newPost) => {
     setPostList([newPost].concat(postList));
   };
+  
   const handleDelete = (postID) => {
     setPostList(postList.filter(post => post.id !== postID));
     axios.delete(`http://localhost:1337/posts/${postID}`,
@@ -41,7 +42,7 @@ const Home = () => {
       <br/>
       <h2>Fil d'actualités</h2>
       <div className="posts-list">
-      {postList.map(element => <Post key={element.id} id={element.id} text={element.text} username={element.user.username} userID={element.user.id} like={element.like} handleDelete={handleDelete}/>)}
+        {postList.map(element => <Post key={element.id} id={element.id} text={element.text} username={element.user.username} userID={element.user.id} like={element.like} handleDelete={handleDelete}/>)}
       </div>      
     </>
   )  
