@@ -1,0 +1,21 @@
+@import "config";
+
+.App {
+  font-family: Verdana, sans-serif;
+  h1,
+  h2 {
+    font-family: serif;
+    text-align: center;
+    color: $primary;
+  }
+  a {
+    color: $primary;
+  }
+}
+
+.container {
+  width: 50%;
+  margin: auto auto;
+  padding-top: 10vh;
+  text-align: justify;
+}
